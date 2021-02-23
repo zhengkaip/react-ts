@@ -1,0 +1,63 @@
+@import '~antd/dist/antd.css';
+
+
+.App {
+    display: flex;
+    height: 100%;
+
+    :global {
+
+        .sideMenu {
+            min-height: 100%;
+            max-width: 200px;
+        }
+
+        .left-content {
+            flex: 1;
+            min-height: 100%;
+            overflow-y: scroll;
+        }
+
+        .ant-btn {
+            margin-right: 10px;
+        }
+
+        .header,
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+
+        .header {
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+
+            .login {
+                span {
+                    padding: 0 10px;
+                    font-size: 14px;
+                }
+
+                span:last-child {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .tagWrap {
+            padding: 10px;
+            box-shadow: 0 2px 2px rgba($color: #000000, $alpha: 0.2);
+
+            .ant-tag {
+                padding: 5px 10px;
+                cursor: pointer;
+            }
+        }
+    }
+
+}
+
+.content {
+    padding: 20px;
+}

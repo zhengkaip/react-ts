@@ -1,0 +1,11 @@
+@import '~antd/dist/antd.css';
+
+.content {
+    text-align: center;
+
+    :global {
+        .h5 {
+            font-size: 100px;
+        }
+    }
+}
