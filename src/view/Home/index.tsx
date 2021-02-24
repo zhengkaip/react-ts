@@ -1,7 +1,6 @@
 import React from 'react'
-import Style from './home.module.scss'
+import Style from './index.module.scss'
 import { Table } from 'antd'
-import { useLocation } from "react-router-dom";
 
 const columnsData = [
     {
@@ -59,10 +58,9 @@ const tableData = [
     },
 ];
 
-export const Home = () => {
+const Home = () => {
     const [columns, setColumns] = React.useState(columnsData);
     const [data, setData] = React.useState(tableData);
-    const location = useLocation();
     return (
         <>
             <div className={Style['section-header']}>
@@ -115,3 +113,4 @@ export const Home = () => {
         </>
     )
 }
+export default Home

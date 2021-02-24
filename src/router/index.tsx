@@ -1,20 +1,22 @@
-import { HashRouter, Switch } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
 
 import Store from '@/redux'
-import { routeConfig } from "./route.config"
 
 import renderRoutes from './RouteConfig'
+import { RouteModel } from './route.config'
+
+interface RouterConfigProps {
+    routes: RouteModel[]
+}
 
 
-const RouterConfig = () => {
+const RouterConfig = (props: RouterConfigProps) => {
     return (
         <Provider store={Store}>
             <HashRouter>
-                <Switch>
-                    {renderRoutes({ routes: routeConfig })}
-                </Switch>
+                {renderRoutes({ routes: props.routes })}
             </HashRouter>
         </Provider>
     )

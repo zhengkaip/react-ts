@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
 
-export const Login = () => {
+const Login = () => {
     const history = useHistory()
     const setAuthed = () => {
         localStorage.setItem('authed', 'true')
@@ -13,3 +13,4 @@ export const Login = () => {
         </div>
     )
 }
+export default Login

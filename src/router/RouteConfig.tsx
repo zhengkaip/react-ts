@@ -1,6 +1,5 @@
 import { Route, Redirect, Switch } from "react-router-dom";
 import { RouteConfig } from "react-router-config";
-import React from "react";
 
 export interface IRouteConfig extends RouteConfig {
     auth?: boolean;
@@ -26,7 +25,6 @@ function renderRoutes({ routes, multipleRoutes, extraProps, switchProps }: IRout
                 exact={route.exact}
                 strict={route.strict}
                 render={props => {
-                    debugger
                     const { location } = props
                     const authed = localStorage.getItem('authed')
                     if (!authed && route.auth) {
@@ -56,6 +54,13 @@ function renderRoutes({ routes, multipleRoutes, extraProps, switchProps }: IRout
         // 将非Switch包裹的Route挂载到Switch节点之前
         multipleRoutes && list.unshift(...mapFunc(multipleRoutes));
         // 返回一个数组，[<Route/>,...,<Route/>,<Switch>...</Switch>]（实际元素并非如此结构，此处仅为方便说明写的伪代码），React会将数组渲染成节点
+
+        // await new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve('22')
+        //     }, 3000)
+        // })
+
         return list;
     }
 }

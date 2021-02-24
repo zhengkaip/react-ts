@@ -1,10 +1,11 @@
 import React from 'react';
-import Style from './list.module.scss'
+import Style from './index.module.scss'
 
-export const List = () => {
+const List = () => {
     return (
         <div className={Style.content}>
             <h5 className="h5">h5</h5>
         </div>
     )
 }
+export default List

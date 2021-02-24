@@ -54,6 +54,22 @@
                 cursor: pointer;
             }
         }
+
+        .ant-breadcrumb>span:first-child a {
+            color: rgba(0, 0, 0, 0.85);
+        }
+
+        .ant-breadcrumb>span:last-child {
+            color: rgba(0, 0, 0, 0.45);
+        }
+
+        .ant-tag-blue a {
+            color: #096dd9
+        }
+
+        .ant-menu-item-selected .ant-menu-item-icon {
+            color: #fff !important;
+        }
     }
 
 }

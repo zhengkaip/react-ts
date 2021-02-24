@@ -1,9 +1,11 @@
 import React from 'react';
 
-export const ErrorPage = () => {
+const ErrorPage = () => {
     return (
         <div className="content">
             404
         </div>
     )
 }
+
+export default ErrorPage
