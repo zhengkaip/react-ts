@@ -58,10 +58,7 @@
         ]
     },
     "devDependencies": {
-        "@svgr/webpack": "^4.3.3",
         "@types/webpack-env": "^1.16.0",
-        "babel-core": "^6.26.3",
-        "babel-loader": "^7.1.5",
         "css-loader": "^5.0.2",
         "less": "^2.7.3",
         "less-loader": "^7.3.0",

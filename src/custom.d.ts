@@ -1,6 +1,8 @@
+
+import * as React from 'react';
+declare interface SvgrComponent extends React.StatelessComponent<React.SVGAttributes<SVGElement>> { }
+
 declare module '*.svg' {
-    import React = require('react');
-    export const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-    const src: string;
-    export default src;
-} 
+    const content: SvgrComponent
+    export default content
+}

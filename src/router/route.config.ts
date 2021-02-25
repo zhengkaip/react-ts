@@ -27,7 +27,7 @@ export const contentRouter: RouteModel[] = [
             path: "/index",
             name: "首页",
             component: Home,
-            icon: 'icon-damuzhi',
+            icon: 'icon-menu',
             auth: true
         }]
     },
@@ -36,18 +36,18 @@ export const contentRouter: RouteModel[] = [
         component: TransferPage,
         auth: true,
         name: '系统管理',
-        icon: 'icon-damuzhi',
+        icon: 'icon-menu',
         routes: [{
             path: "/system/user",
             name: "人员管理",
             component: User,
-            icon: 'icon-damuzhi',
+            icon: 'icon-menu',
             auth: true
         }, {
             path: "/system/menuManage",
             name: "菜单管理",
             component: MenuManage,
-            icon: 'icon-damuzhi',
+            icon: 'icon-menu',
             auth: true
         }]
     }

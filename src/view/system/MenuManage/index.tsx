@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { Table, Space, Button, Modal, Form, Input, Radio } from 'antd'
-import Icon from '@ant-design/icons';
+import { Table, Space, Button, Modal, Form, Input, Radio, Popover } from 'antd'
+
 import MyIcon from '@/icon'
 import icons from '@/components/IconSelect/requireIcons'
-import Logo from '@/icon/svg/Logo.svg';
-// import Icon from '@/components/Icon'
+import { IconSelect } from '@/components'
 
 const tableData = [
     {
@@ -41,9 +40,6 @@ const tableData = [
 const layout = {
     labelCol: { span: 4 },
     wrapperCol: { span: 20 },
-};
-const tailLayout = {
-    wrapperCol: { offset: 8, span: 16 },
 };
 
 const MenuManage = () => {
@@ -107,6 +103,7 @@ const MenuManage = () => {
     const [open, setOpen] = useState(true)
     const [expKeys, setExpKeys] = useState<number[]>([]);
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [iconName, setIconName] = useState('')
     const [form] = Form.useForm();
     const openOrCloseAll = () => {
         !open ? setExpKeys([]) : setExpKeys(data && data.map(i => i.id));
@@ -144,9 +141,9 @@ const MenuManage = () => {
     console.log(icons)
     return (
         <>
-            {/* <Icon component={<img src={Logo} />} /> */}
-            {/* <Icon></Icon> */}
-            {/* <img src={logo} /> */}
+            <IconSelect style={{ width: '100px' }} selectIconCallBack={(iconName: string) => {
+                setIconName(iconName)
+            }} />
             <Button type="primary">新增</Button>
             <Button onClick={openOrCloseAll}>{open ? '展开' : '折叠'}</Button>
             <Table
@@ -185,6 +182,18 @@ const MenuManage = () => {
                         rules={[{ required: true, message: '请输入节点名称' }]}
                     >
                         <Input />
+                    </Form.Item>
+                    <Form.Item
+                        label="节点图标"
+                        name="name"
+                        rules={[{ required: true, message: '请选择节点图标' }]}
+                    >
+                        <Popover placement="leftBottom" content={<IconSelect style={{ width: '100px' }} selectIconCallBack={(iconName: string) => {
+                            setIconName(iconName)
+                        }} />}>
+                            <Input value={iconName} placeholder="点击选择图标" prefix={<MyIcon type={`icon-${iconName}`} />} readOnly style={{}}>
+                            </Input>
+                        </Popover>
                     </Form.Item>
                 </Form>
             </Modal>

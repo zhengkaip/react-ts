@@ -16,24 +16,32 @@ module.exports = {
             '@utils': pathResolve('src/utils')
             // 此处是一个示例，实际可根据各自需求配置
         },
-        configure: (config, { env, paths }) => {
-            config.module.rules.push({
-                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                    },
-                    {
-                        loader: '@svgr/webpack',
-                        options: {
-                            babel: false,
-                            icon: true,
-                        },
-                    },
-                ],
-            });
-            return config;
-        }
+        // configure: (config, { env, paths }) => {
+        //     const fileLoaderRule = config.module.rules.find(rule => rule.test && rule.test.test('.svg'));
+        //     if (fileLoaderRule) fileLoaderRule.exclude = /\.svg$/;
+        //     config.module.rules.push({
+        //         test: /\.svg$/,
+        //         issuer: {
+        //             // Strict these svg as component only for svgs that are imported from js / ts files.
+        //             // It allows to configure other behaviour for svgs that are imported from other file types (such as .css)
+        //             test: /\.(js|ts)x?$/,
+        //         },
+        //         use: [
+        //             // {
+        //             //     loader: 'babel-loader',
+        //             // },
+        //             {
+        //                 loader: '@svgr/webpack',
+        //                 options: {
+        //                     icon: true,
+        //                     native: true,
+        //                     replaceAttrValues: { old: 'new' }
+        //                 },
+        //             },
+        //         ],
+        //     });
+        //     return config;
+        // }
     },
     plugins: [
         {
