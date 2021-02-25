@@ -26,7 +26,6 @@ function renderRoutes({ routes, multipleRoutes, extraProps, switchProps }: IRout
                 exact={route.exact}
                 strict={route.strict}
                 render={props => {
-                    debugger
                     const { location } = props
                     const authed = localStorage.getItem('authed')
                     if (!authed && route.auth) {

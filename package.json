@@ -58,6 +58,8 @@
         ]
     },
     "devDependencies": {
+        "@svgr/webpack": "^5.5.0",
+        "babel-loader": "^8.2.2",
         "css-loader": "^5.0.2",
         "less": "^2.7.3",
         "less-loader": "^7.3.0",

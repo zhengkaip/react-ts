@@ -15,6 +15,24 @@ module.exports = {
             '@store': pathResolve('src/store'),
             '@utils': pathResolve('src/utils')
             // 此处是一个示例，实际可根据各自需求配置
+        },
+        configure: (config, { env, paths }) => {
+            config.module.rules.push({
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                    },
+                    {
+                        loader: '@svgr/webpack',
+                        options: {
+                            babel: false,
+                            icon: true,
+                        },
+                    },
+                ],
+            });
+            return config;
         }
     },
     plugins: [

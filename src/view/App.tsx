@@ -45,7 +45,6 @@ export function App({ route }: RouteConfig) {
     const currentLinK = 1
     const routes = RouteConfigArr[0].routes as RouteModel[]
     const selectMenu = ({ item, key, keyPath, selectedKeys, domEvent }: SelectInfo) => {
-        debugger
         console.log(key)
     }
     return (

@@ -3,7 +3,6 @@ import { Menu } from 'antd';
 import './myMenu.module.scss'
 
 import { RouteModel } from '@/router/route.config'
-import path from 'path'
 
 
 import { Herf } from '@/components'
@@ -14,9 +13,6 @@ export function MyMenu(view: RouteModel): any {
         return (
             view.name ?
                 <SubMenu key={view.path} title={view.name}>
-                    {
-                        view.path
-                    }
                     {
                         view.routes.map((v) => {
                             // eslint-disable-next-line @typescript-eslint/no-unused-vars
