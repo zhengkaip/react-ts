@@ -2,10 +2,11 @@ import React from 'react';
 import App from '@/view/App'
 import Home from '@/view/Home'
 import Login from '@/view/Login'
-import User from '@/view/User'
+import User from '@@/src/view/system/UserManage'
 import ErrorPage from '@/view/ErrorPage'
 import TransferPage from '@/view/TransferPage'
 import MenuManage from '@/view/system/MenuManage'
+import RoleManage from '@/view/system/RoleManage'
 
 export interface RouteModel {
     path: string,
@@ -49,6 +50,12 @@ export const contentRouter: RouteModel[] = [
             component: MenuManage,
             icon: 'icon-menu',
             auth: true
+        }, {
+            path: "/system/roleManage",
+            name: "角色管理",
+            component: RoleManage,
+            icon: 'icon-menu',
+            auth: true
         }]
     }
 ]
@@ -59,15 +66,15 @@ export const contentRouter: RouteModel[] = [
 */
 export const routeConfig: RouteModel[] = [
     {
+        path: "/login",
+        component: Login,
+        exact: true
+    },
+    {
         path: "/",
         component: App,
         auth: true,
         routes: contentRouter
-    },
-    {
-        path: "/login",
-        component: Login,
-        exact: true
     },
     {
         path: '',

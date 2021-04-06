@@ -15,29 +15,29 @@ interface IconSelectProps {
     selectIconCallBack: callBack,
     style: CSSProperties
 }
-export const IconSelect = ({ selectIconCallBack }: IconSelectProps) => {
+export const IconSelect = ({ selectIconCallBack, style }: IconSelectProps) => {
     const [iconList, setIconList] = useState(icons)
     const searchIcon = (e: React.ChangeEvent<HTMLInputElement>) => {
         let value = e.target.value
-        setIconList(icons.filter(icon => icon.includes(value)))
+        setIconList(icons.filter((icon: string) => icon.includes(value)))
     }
     return (
-        <div>
+        <div style={style} >
             <Input onChange={searchIcon} />
             <div className={Style['icon-list']}>
                 {
-                    iconList.map(icon => {
+                    iconList.map((icon: string) => {
                         return (
-                            <div onClick={() => {
+                            <div key={icon} onClick={() => {
                                 selectIconCallBack(icon)
                             }}>
-                                <MyIcon key={icon} type={`icon-${icon}`} style={{ maxHeight: '30px', maxWidth: '16px' }} />
+                                <MyIcon type={`icon-${icon}`} style={{ maxHeight: '30px', maxWidth: '16px' }} />
                                 <span className='icon-name'>{icon}</span>
                             </div>
                         )
                     })
                 }
             </div>
-        </div>
+        </div >
     );
 }

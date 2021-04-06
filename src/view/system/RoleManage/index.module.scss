@@ -1,0 +1,23 @@
+.flex-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    :global {
+        .flex-1 {
+            flex: 1;
+        }
+
+        .flex-2 {
+            flex: 2;
+        }
+
+        .flex-3 {
+            flex: 3;
+        }
+
+        .flex-4 {
+            flex: 4;
+        }
+    }
+}
