@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, LazyExoticComponent } from 'react';
 import App from '@/view/App'
 import Home from '@/view/Home'
 import Login from '@/view/Login'
@@ -8,10 +8,19 @@ import TransferPage from '@/view/TransferPage'
 import MenuManage from '@/view/system/MenuManage'
 import RoleManage from '@/view/system/RoleManage'
 
+// LazyExoticComponent<any> // lazy 异步组件时使用
+
+// type params = '2' | '3'
+
+// function fn<T>(str: T): T {
+//     return str
+// }
+// fn<params>('4')
+
 export interface RouteModel {
     path: string,
     name?: string,
-    component?: React.SFC<any>,
+    component?: React.FC<any>,
     redirect?: string,
     auth?: boolean,
     routes?: RouteModel[],
@@ -22,7 +31,10 @@ export interface RouteModel {
 export const contentRouter: RouteModel[] = [
     {
         path: "/index",
-        component: TransferPage,
+        // component: lazy( // 测试异步组件
+        //     () => import('@/view/Home')
+        // ),
+        component: Home,
         auth: true,
         routes: [{
             path: "/index",

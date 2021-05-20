@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Table, Space, Button, Modal, Form, Input, Radio, Popover, TreeSelect, Switch, InputNumber } from 'antd'
-
+import Style from './index.module.scss'
 import MyIcon from '@/icon'
 import { IconSelect, MyTreeNode } from '@/components'
 
@@ -148,8 +148,10 @@ const MenuManage = () => {
 
     return (
         <>
-            <Button type="primary" onClick={addMenu}>新增</Button>
-            <Button onClick={openOrCloseAll}>{open ? '展开' : '折叠'}</Button>
+            <div className={Style.btns}>
+                <Button type="primary" onClick={addMenu}>新增</Button>
+                <Button onClick={openOrCloseAll}>{open ? '展开' : '折叠'}</Button>
+            </div>
             <Table
                 rowKey="id"
                 bordered={true}

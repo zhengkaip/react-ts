@@ -88,7 +88,7 @@ export default function App({ route }: RouteConfig) {
     return (
         <div className={Style.App}>
             <Menu
-                className="sideMenu"
+                className={Style.sideMenu}
                 theme="dark"
                 mode="inline"
                 defaultSelectedKeys={defaultSelectedKeys}
@@ -102,9 +102,9 @@ export default function App({ route }: RouteConfig) {
                     renderMenuItem()
                 }
             </Menu>
-            <div className="left-content">
-                <div className="header">
-                    <div className="flex">
+            <div className={Style.leftContent}>
+                <div className={Style.header}>
+                    <div className={Style.flex}>
                         <Button onClick={toggleCollapsed}>
                             {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
                         </Button>
@@ -117,12 +117,12 @@ export default function App({ route }: RouteConfig) {
                             }
                         </Breadcrumb>
                     </div>
-                    <div className="flex login">
+                    <div className={`${Style.flex} login`}>
                         <span>用户名</span>
                         <span>退出登录</span>
                     </div>
                 </div>
-                <div className="tagWrap">
+                <div className={Style.tagWrap}>
                     <Tag color={pathname === '/index' ? 'blue' : ''}><Link to='/index'>首页</Link></Tag>
                     {
                         routeList.map(item => {

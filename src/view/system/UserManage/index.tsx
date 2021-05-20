@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Form, Input, Modal, Row, Col, Table, TreeSelect, Select } from 'antd'
-
+import Style from './index.module.scss'
 import { tableData, tableTitle } from './data'
 const { Option } = Select;
 
@@ -54,7 +54,7 @@ const User = () => {
         setIsModalVisible(false)
     }
     return (
-        <div className="content">
+        <div className={Style.content}>
             <Form form={form} name="horizontal_login" layout="inline" onFinish={onFinish} initialValues={searchParams}>
                 <Form.Item
                     name="keyword"

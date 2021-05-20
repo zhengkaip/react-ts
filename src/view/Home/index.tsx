@@ -64,7 +64,7 @@ const Home = () => {
     return (
         <>
             <div className={Style['section-header']}>
-                <p>运行概况</p>
+                <p onClick={() => { setColumns([]) }}>运行概况</p>
                 <p>更新时间：02-22（星期一）</p>
             </div>
             <h3 className={Style.title}>待异常处理总概况</h3>
