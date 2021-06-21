@@ -6,15 +6,16 @@ import {
     MenuUnfoldOutlined,
     MenuFoldOutlined
 } from '@ant-design/icons';
-import { RouteConfig } from 'react-router-config';
 import { activeMenuOptions, renderMenuItem, MyBreadcrumb, returnMenuNode } from '@/components'
-import TransferPage from '@/view/TransferPage'
 import { contentRouter, RouteModel } from '@/router/route.config'
 import { Link, useLocation, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootStore } from '@/redux'
 import { ADD_ROUTE, DEL_ROUTE } from '@/constrants/action/routeList'
 import { routeItem } from '@/redux/reducers/routeList'
+import renderRoutes from '@/router/RouteConfig'
+import { DEL_TOKEN } from '@/constrants/action/token'
+import TransferPage from './TransferPage'
 
 export interface MenuInfo {
     key: React.Key;
@@ -25,8 +26,11 @@ export interface MenuInfo {
 export interface SelectInfo extends MenuInfo {
     selectedKeys?: React.Key[];
 }
+export interface IMenuListProps {
+    routes: RouteModel[]
+}
 
-export default function App({ route }: RouteConfig) {
+export default function App({ routes }: IMenuListProps) {
     const dispatch = useDispatch()
     const location = useLocation()
     const history = useHistory()
@@ -70,19 +74,27 @@ export default function App({ route }: RouteConfig) {
 
     let routeList: routeItem[] = useSelector((state: RootStore) => state.routeReducer)
 
-    useEffect(() => {
-        if (routeList.length) {
-            history.push(routeList[routeList.length - 1].key)
-        } else {
-            history.push('/index')
-        }
-    }, [routeList, history])
+    // useEffect(() => {
+    //     if (routeList.length) {
+    //         history.push(routeList[routeList.length - 1].key)
+    //     } else {
+    //         history.push('/index')
+    //     }
+    // }, [routeList, history])
 
     const closeTag = (e: React.MouseEvent<HTMLElement>, item: routeItem) => {
         dispatch({
             type: DEL_ROUTE,
             item: item
         })
+    }
+
+    const outLogin = () => {
+        dispatch({
+            type: DEL_TOKEN,
+            token: ''
+        })
+        history.replace('/login')
     }
 
     return (
@@ -119,7 +131,7 @@ export default function App({ route }: RouteConfig) {
                     </div>
                     <div className={`${Style.flex} login`}>
                         <span>用户名</span>
-                        <span>退出登录</span>
+                        <span onClick={outLogin}>退出登录</span>
                     </div>
                 </div>
                 <div className={Style.tagWrap}>
@@ -135,7 +147,9 @@ export default function App({ route }: RouteConfig) {
                     }
                 </div>
                 <div className={Style.content}>
-                    <TransferPage route={route}></TransferPage>
+                    <TransferPage routes={routes}></TransferPage>
+                    {/* <Route path="/index" exact component={Home}></Route> */}
+                    {/* {renderRoutes({ routes })} */}
                 </div>
             </div>
         </div >

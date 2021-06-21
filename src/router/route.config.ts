@@ -2,7 +2,7 @@ import React, { lazy, LazyExoticComponent } from 'react';
 import App from '@/view/App'
 import Home from '@/view/Home'
 import Login from '@/view/Login'
-import User from '@@/src/view/system/UserManage'
+import User from '@/view/system/UserManage'
 import ErrorPage from '@/view/ErrorPage'
 import TransferPage from '@/view/TransferPage'
 import MenuManage from '@/view/system/MenuManage'
@@ -20,7 +20,8 @@ import RoleManage from '@/view/system/RoleManage'
 export interface RouteModel {
     path: string,
     name?: string,
-    component?: React.FC<any>,
+    // component?: React.FC<any>,
+    component?: string | React.FC<any>,
     redirect?: string,
     auth?: boolean,
     routes?: RouteModel[],
@@ -34,38 +35,46 @@ export const contentRouter: RouteModel[] = [
         // component: lazy( // 测试异步组件
         //     () => import('@/view/Home')
         // ),
-        component: Home,
-        auth: true,
-        routes: [{
-            path: "/index",
-            name: "首页",
-            component: Home,
-            icon: 'icon-menu',
-            auth: true
-        }]
+        name: "首页",
+        component: 'view/Home',
+        icon: 'icon-menu',
+        auth: true
     },
     {
         path: "/system",
-        component: TransferPage,
+        // component: TransferPage,
+        // component: 'view/TransferPage',
         auth: true,
         name: '系统管理',
         icon: 'icon-menu',
         routes: [{
-            path: "/system/user",
-            name: "人员管理",
-            component: User,
-            icon: 'icon-menu',
-            auth: true
-        }, {
             path: "/system/menuManage",
             name: "菜单管理",
-            component: MenuManage,
+            // component: MenuManage,
+            component: 'view/system/MenuManage',
             icon: 'icon-menu',
             auth: true
         }, {
             path: "/system/roleManage",
             name: "角色管理",
-            component: RoleManage,
+            // component: RoleManage,
+            component: 'view/system/RoleManage',
+            icon: 'icon-menu',
+            auth: true
+        }]
+    },
+    {
+        path: "/system1",
+        // component: TransferPage,
+        // component: 'view/TransferPage',
+        auth: true,
+        name: '系统管理1',
+        icon: 'icon-menu',
+        routes: [{
+            path: "/system/user",
+            name: "人员管理",
+            // component: User,
+            component: 'view/system/UserManage',
             icon: 'icon-menu',
             auth: true
         }]
